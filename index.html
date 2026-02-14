@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Will You Be My Valentine? 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            min-height: -webkit-fill-available;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            padding: 20px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            height: -webkit-fill-available;
+        }
+
+        /* Floating hearts background */
+        .heart-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 15s infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+            z-index: 10;
+            animation: fadeInScale 1s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 25px;
+                border-radius: 20px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 2em !important;
+            }
+
+            .message {
+                font-size: 1.1em !important;
+            }
+
+            .big-heart {
+                font-size: 70px !important;
+            }
+
+            button {
+                padding: 12px 30px !important;
+                font-size: 1.1em !important;
+            }
+
+            .celebration h2 {
+                font-size: 2em !important;
+            }
+
+            .celebration p {
+                font-size: 1.2em !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.6em !important;
+            }
+
+            .message {
+                font-size: 1em !important;
+                margin: 20px 0 !important;
+            }
+
+            .big-heart {
+                font-size: 60px !important;
+                margin: 20px 0 !important;
+            }
+
+            .buttons {
+                flex-direction: column;
+                gap: 15px !important;
+            }
+
+            button {
+                width: 100%;
+                padding: 15px 20px !important;
+                font-size: 1em !important;
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #e91e63;
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .message {
+            color: #333;
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin: 30px 0;
+            font-style: italic;
+        }
+
+        .big-heart {
+            font-size: 100px;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin: 30px 0;
+            display: inline-block;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.2);
+            }
+        }
+
+        .buttons {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.4);
+        }
+
+        .yes-btn:active {
+            transform: scale(1.05);
+        }
+
+        .no-btn {
+            background: #ddd;
+            color: #666;
+            position: relative;
+        }
+
+        .no-btn:hover {
+            background: #ccc;
+        }
+
+        .no-btn:active {
+            background: #bbb;
+        }
+
+        .celebration {
+            display: none;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .celebration h2 {
+            color: #e91e63;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .celebration p {
+            font-size: 1.4em;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #f5576c;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .sparkle {
+            display: inline-block;
+            animation: sparkle 1.5s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div class="heart-bg" id="heartBg"></div>
+
+    <div class="container">
+        <div id="question">
+            <h1>💖 Hey Beautiful 💖</h1>
+            <div class="big-heart">❤️</div>
+            <p class="message">
+                Every moment with you feels like magic.<br>
+                You make my heart skip a beat every single day.<br>
+                So I have one very important question...
+            </p>
+            <h1 style="color: #c2185b; margin-top: 30px;">
+                Will You Be My Valentine?
+            </h1>
+            <div class="buttons">
+                <button class="yes-btn" onclick="sayYes()">Yes! 💕</button>
+                <button class="no-btn" id="noBtn" onclick="moveButton()">No</button>
+            </div>
+        </div>
+
+        <div class="celebration" id="celebration">
+            <h2>🎉 YES! 🎉</h2>
+            <div class="big-heart">💖</div>
+            <p>You just made me the happiest person alive!</p>
+            <p class="sparkle">✨</p>
+            <p style="font-size: 1.2em; margin-top: 30px;">
+                I can't wait to celebrate with you! ❤️
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heartBg = document.getElementById('heartBg');
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            heartBg.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 15000);
+        }
+
+        // Create hearts continuously
+        setInterval(createHeart, 300);
+
+        // Make "No" button move away
+        let noClickCount = 0;
+        function moveButton() {
+            const btn = document.getElementById('noBtn');
+            const container = document.querySelector('.container');
+            
+            noClickCount++;
+            
+            if (noClickCount === 1) {
+                btn.textContent = 'Are you sure?';
+            } else if (noClickCount === 2) {
+                btn.textContent = 'Really? 🥺';
+            } else if (noClickCount === 3) {
+                btn.textContent = 'Please? 💔';
+            }
+            
+            const maxX = container.offsetWidth - btn.offsetWidth - 80;
+            const maxY = container.offsetHeight - btn.offsetHeight - 120;
+            
+            const randomX = Math.random() * maxX - maxX/2;
+            const randomY = Math.random() * maxY - maxY/2;
+            
+            btn.style.position = 'relative';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+
+        // Show celebration
+        function sayYes() {
+            document.getElementById('question').style.display = 'none';
+            document.getElementById('celebration').style.display = 'block';
+            
+            // Create confetti
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    createConfetti();
+                }, i * 30);
+            }
+        }
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.background = ['#f5576c', '#f093fb', '#4facfe', '#ffd700', '#ff6b6b'][Math.floor(Math.random() * 5)];
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(confetti);
+
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
