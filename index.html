@@ -343,7 +343,7 @@
         </div>
 
         <div class="celebration" id="celebration">
-            <h2>🎉 LET'S GOOOOOOOO! 🎉</h2>
+            <h2>🎉 LET'S GOOOOOO! 🎉</h2>
             <div class="big-heart">💖</div>
             <p>You just made me the happiest person. Can't wait to celebrate with you in person, princess!</p>
             <p class="sparkle">✨</p>
@@ -391,6 +391,9 @@
                 btn.textContent = 'Million Times Yes? 🥺';
             } else if (noClickCount === 5) {
                 btn.textContent = 'Pleaseee beboooooo 💔';
+            } else if (noClickCount === 7) {
+                btn.style.display = 'none';
+                return;
             }
             
             const maxX = container.offsetWidth - btn.offsetWidth - 80;
