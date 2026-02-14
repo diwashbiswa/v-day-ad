@@ -21,7 +21,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             position: relative;
             padding: 20px;
             -webkit-font-smoothing: antialiased;
@@ -73,9 +74,12 @@
             text-align: center;
             max-width: 600px;
             width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
             position: relative;
             z-index: 10;
             animation: fadeInScale 1s ease-out;
+            margin: auto;
         }
 
         @media (max-width: 768px) {
@@ -113,31 +117,35 @@
 
         @media (max-width: 480px) {
             .container {
-                padding: 30px 20px;
+                padding: 25px 15px;
+                max-height: 95vh;
             }
 
             h1 {
-                font-size: 1.6em !important;
+                font-size: 1.5em !important;
+                margin-bottom: 10px !important;
             }
 
             .message {
-                font-size: 1em !important;
-                margin: 20px 0 !important;
+                font-size: 0.95em !important;
+                margin: 15px 0 !important;
+                line-height: 1.5 !important;
             }
 
             .big-heart {
-                font-size: 60px !important;
-                margin: 20px 0 !important;
+                font-size: 50px !important;
+                margin: 15px 0 !important;
             }
 
             .buttons {
                 flex-direction: column;
-                gap: 15px !important;
+                gap: 12px !important;
+                margin-top: 20px !important;
             }
 
             button {
                 width: 100%;
-                padding: 15px 20px !important;
+                padding: 14px 20px !important;
                 font-size: 1em !important;
             }
         }
@@ -172,7 +180,7 @@
         .message {
             color: #333;
             font-size: 1.3em;
-            line-height: 1.8;
+            line-height: 1.6;
             margin: 30px 0;
             font-style: italic;
         }
@@ -318,7 +326,10 @@
             <h1>💖 Hey Beautiful 💖</h1>
             <div class="big-heart">❤️</div>
             <p class="message">
-                Every moment with you feels like magic.<br>
+                There's not an hour that goes by that I don't think about you.<br>
+                I see you. I hear you. I feel you.<br>
+                I know I don't show you often, but I care about you a lot.<br>
+                Every moment with you feels so special.<br>
                 You make my heart skip a beat every single day.<br>
                 So I have one very important question...
             </p>
@@ -332,7 +343,7 @@
         </div>
 
         <div class="celebration" id="celebration">
-            <h2>🎉 LET'S GOOOOOOOOOOOOOOO! 🎉</h2>
+            <h2>🎉 LET'S GOOOOOOOO! 🎉</h2>
             <div class="big-heart">💖</div>
             <p>You just made me the happiest person. Can't wait to celebrate with you in person, princess!</p>
             <p class="sparkle">✨</p>
@@ -376,6 +387,10 @@
                 btn.textContent = 'Really? 🥺';
             } else if (noClickCount === 3) {
                 btn.textContent = 'Please? 💔';
+            } else if (noClickCount === 4) {
+                btn.textContent = 'Million Times Yes? 🥺';
+            } else if (noClickCount === 5) {
+                btn.textContent = 'Pleaseee beboooooo 💔';
             }
             
             const maxX = container.offsetWidth - btn.offsetWidth - 80;
